@@ -82,6 +82,12 @@ const buildLayout = () => {
     parent: container,
   })
 
+  const loadingIndicator = createElement('div', {
+    parent: container,
+    classList:
+      'hidden w-6 h-6 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto',
+  })
+
   // const dummyData = { data1: 'data 1', data2: 'data 2' }
 
   // const cloudCoverContainer = tableLayout(dummyData, resultContainer)
@@ -95,6 +101,7 @@ const buildLayout = () => {
     unitSelector,
     zipInput,
     resultContainer,
+    loadingIndicator,
   }
 }
 
