@@ -72,6 +72,12 @@ const getHumidity = (data) => {
   }
 }
 
+const getIcon = (data) => {
+  return {
+    icon: data.currentConditions.icon,
+  }
+}
+
 export {
   fetchData,
   getCloudCover,
@@ -83,4 +89,5 @@ export {
   getNextDaysArray,
   getWindInfo,
   getHumidity,
+  getIcon,
 }
