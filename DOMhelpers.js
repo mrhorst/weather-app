@@ -11,22 +11,19 @@ const createElement = (type, data = {}) => {
 
 const buildLayout = () => {
   const navbar = createElement('nav', {
-    classList: 'grid grid-cols-3 h-16 bg-blue-100 mb-5 items-center',
+    classList: 'grid grid-cols-4 h-15 bg-gray-200  justify-center align-center',
     parent: document.body,
   })
-  const title = createElement('h2', {
-    parent: navbar,
-    classList: 'col-start-2 text-center font-bold text-lg',
-    textContent: 'Weather App',
-  })
+
   const container = createElement('div', {
     id: 'input-container',
-    classList: 'grid gap-4 justify-center align-center',
+    classList: 'grid col-start-3 col-span-2 justify-center align-center',
+    parent: navbar,
   })
   const form = createElement('form', {
     id: 'form',
     parent: container,
-    classList: 'grid grid-rows-2 gap-3 place-items-center',
+    classList: 'flex gap-2 place-items-center',
   })
   const zipContainer = createElement('div', {
     id: 'zip-container',
@@ -36,12 +33,12 @@ const buildLayout = () => {
   const zipLabel = createElement('label', {
     textContent: 'Zip Code',
     parent: zipContainer,
-    classList: 'text-end',
+    classList: 'font-semibold text-end',
   })
   const zipInput = createElement('input', {
     id: 'zip',
     parent: zipContainer,
-    classList: 'col-start-2 shadow-md ring-1 rounded ',
+    classList: 'col-start-2 shadow-md ring-1 rounded w-20',
     value: '11001',
   })
   const unitContainer = createElement('div', {
@@ -52,7 +49,7 @@ const buildLayout = () => {
   const unitLabel = createElement('label', {
     textContent: 'Unit',
     parent: unitContainer,
-    classList: 'text-end',
+    classList: 'text-end font-semibold',
   })
   const unitSelector = createElement('select', {
     parent: unitContainer,
@@ -73,13 +70,13 @@ const buildLayout = () => {
     id: 'submit-form',
     parent: form,
     classList:
-      'border w-30 rounded-xl bg-blue-700 text-white font-bold p-1 mt-3 hover:bg-blue-500 transition-colors duration-200 ease-in-out',
-    textContent: 'Submit',
+      'border w-10 rounded-xl bg-blue-300 text-white font-bold p-1 hover:bg-blue-500 transition-colors duration-200 ease-in-out',
+    textContent: '🔍',
   })
 
   const resultContainer = createElement('div', {
     classList: 'grid grid-cols-2 gap-5',
-    parent: container,
+    // parent: ''container,
   })
 
   const loadingIndicator = createElement('div', {
@@ -93,8 +90,6 @@ const buildLayout = () => {
   // const cloudCoverContainer = tableLayout(dummyData, resultContainer)
   // const temperatureContainer = tableLayout(dummyData, resultContainer)
   // const sunContainer = tableLayout(dummyData, resultContainer)
-
-  document.body.appendChild(container)
 
   return {
     submitButton,

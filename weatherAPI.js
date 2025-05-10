@@ -32,6 +32,12 @@ const getTemperature = (data) => {
   return temp
 }
 
+const getDescription = (data) => {
+  return {
+    Description: data.description,
+  }
+}
+
 const getCloudCover = (data) => {
   const currentConditions = getCurrentConditions(data)
   const cloud = {
@@ -40,10 +46,41 @@ const getCloudCover = (data) => {
   return cloud
 }
 
+const getResolvedAddress = (data) => {
+  return {
+    'Resolved Address': data.resolvedAddress,
+  }
+}
+
+const getNextDaysArray = (data) => {
+  return {
+    Days: data.days,
+  }
+}
+
+const getWindInfo = (data) => {
+  const currentConditions = getCurrentConditions(data)
+  return {
+    windgust: currentConditions.windgust,
+    windspeed: currentConditions.windspeed,
+  }
+}
+
+const getHumidity = (data) => {
+  return {
+    Humidity: data.currentConditions.humidity,
+  }
+}
+
 export {
   fetchData,
   getCloudCover,
   getCurrentConditions,
   getSunData,
   getTemperature,
+  getDescription,
+  getResolvedAddress,
+  getNextDaysArray,
+  getWindInfo,
+  getHumidity,
 }

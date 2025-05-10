@@ -2,8 +2,13 @@ import { buildLayout, tableLayout } from './DOMhelpers.js'
 import {
   fetchData,
   getCloudCover,
+  getDescription,
+  getHumidity,
+  getNextDaysArray,
+  getResolvedAddress,
   getSunData,
   getTemperature,
+  getWindInfo,
 } from './weatherAPI.js'
 
 const innitUI = () => {
@@ -20,11 +25,22 @@ const innitUI = () => {
     loadingIndicator.classList.remove('hidden')
     submitButton.disabled = true
     const response = await fetchData(zipInput.value, unitSelector.value)
+    console.log(response)
     submitButton.disabled = false
     loadingIndicator.classList.add('hidden')
     const tempData = getTemperature(response)
     const sunData = getSunData(response)
     const cloudData = getCloudCover(response)
+    const description = getDescription(response)
+    const humidity = getHumidity(response)
+    const windInfo = getWindInfo(response)
+    const resolvedAddress = getResolvedAddress(response)
+    const nextDaysArray = getNextDaysArray(response)
+
+    tableLayout(humidity, resultContainer, 'Humidity')
+    tableLayout(description, resultContainer)
+    tableLayout(windInfo, resultContainer)
+    tableLayout(resolvedAddress, resultContainer)
 
     const tempTable = tableLayout(tempData, resultContainer, 'Temperature Data')
     Object.entries(tempTable.cellRefs).forEach((entry) => {
